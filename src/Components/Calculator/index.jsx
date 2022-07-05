@@ -1,11 +1,31 @@
 import React from 'react';
-import CalculatorForm from './CalculatorForm/CalculatorForm';
+import PropTypes from 'prop-types';
 
-export default function Calculator() {
+import CalculatorForm from './CalculatorForm';
+
+export default function Calculator(props) {
+  const { userData, setUserData } = props;
+
   return (
     <div>
       <div>This is test Calculator</div>
-      <CalculatorForm />
+      <CalculatorForm userData={userData} setUserData={setUserData} />
     </div>
   );
 }
+
+Calculator.propTypes = {
+  userData: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      type: PropTypes.oneOf(['Asset', 'Liabilty']),
+      amount: PropTypes.number,
+    }),
+  ),
+  setUserData: PropTypes.func,
+};
+
+Calculator.defaultProps = {
+  userData: [],
+  setUserData: () => {},
+};
