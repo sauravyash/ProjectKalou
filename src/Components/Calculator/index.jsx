@@ -7,8 +7,7 @@ export default function Calculator(props) {
   const { userData, setUserData } = props;
 
   return (
-    <div>
-      <div>This is test Calculator</div>
+    <div className="column p-6">
       <CalculatorForm userData={userData} setUserData={setUserData} />
     </div>
   );

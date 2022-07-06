@@ -60,7 +60,7 @@ export const chartData = {
 
 export default function Display() {
   return (
-    <div className="columns is-flex-direction-column m-0 p-4  is-align-items-center is-justify-content-center">
+    <div className="">
       <ChartContainer className="column">
         <Chart className="p-5" type="line" options={options} data={chartData} />
       </ChartContainer>

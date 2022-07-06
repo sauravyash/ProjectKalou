@@ -12,11 +12,13 @@ function App() {
   const [userData, setUserData] = React.useState([]);
 
   return (
-    <div className="App">
+    <div className="App columns is-flex-direction-column m-0 p-4  is-align-items-center is-justify-content-center">
       <Navbar />
-      <Calculator userData={userData} setUserData={setUserData} />
-      <Table className="column" />
-      <Display userData={userData} />
+      <div className="column columns is-align-items-center is-justify-content-center">
+        <Calculator userData={userData} setUserData={setUserData} />
+        <Table />
+      </div>
+      <Display className="column" userData={userData} />
     </div>
   );
 }

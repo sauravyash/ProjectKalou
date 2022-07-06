@@ -5,7 +5,7 @@ export default function Table() {
     maxWidth: '32rem',
   };
   return (
-    <table className="table is-hoverable" style={tableStyle}>
+    <table className="column p-4 table is-hoverable" style={tableStyle}>
       <thead>
         <tr>
           <th>Name</th>

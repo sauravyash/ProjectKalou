@@ -10,13 +10,9 @@ export default function Form(props) {
   return (
     <CalculatorForm>
       <form>
+        <h1 className="title">Add an Item</h1>
         <div className="field">
-          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-          <label htmlFor="name">
-            <span>Name Of Asset/Liability: </span>
-            <input className="input" type="text" id="name" name="name" />
-
-          </label>
+          <input className="input" type="text" id="name" name="name" placeholder="Name Of Asset/Liability:" />
         </div>
         <div className="field">
           <label className="label" htmlFor="type">
@@ -32,6 +28,9 @@ export default function Form(props) {
               </div>
             </div>
           </label>
+        </div>
+        <div className="field">
+          <input className="input" type="text" id="amount" name="amount" placeholder="Amount" />
         </div>
         <div className="field is-grouped">
           <div className="control">
