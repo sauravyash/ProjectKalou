@@ -37,7 +37,7 @@ function App() {
       <Navbar />
       <div className="column columns is-align-items-center is-justify-content-center">
         <Calculator userData={userData} setUserData={setUserData} />
-        <Table />
+        <Table userData={userData} />
       </div>
       <Display className="column" chartData={uD} />
     </div>

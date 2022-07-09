@@ -1,6 +1,24 @@
 import React from 'react';
 
-export default function Table() {
+export default function Table(props) {
+  // eslint-disable-next-line react/prop-types
+  const { userData } = props;
+  let list;
+
+  React.useEffect(() => {
+    // eslint-disable-next-line react/prop-types
+    list = userData.map((el) => (
+      <tr>
+        <td>{el.name}</td>
+        <td>{el.type}</td>
+        <td>{`$${el.amount}`}</td>
+        <td>❌</td>
+      </tr>
+    ));
+  }, [userData]);
+
+  // eslint-disable-next-line react/prop-types
+
   const tableStyle = {
     maxWidth: '32rem',
   };
@@ -15,12 +33,10 @@ export default function Table() {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Ex1</td>
-          <td>Asset</td>
-          <td>$3000</td>
-          <td>❌</td>
-        </tr>
+        {
+          // TODO: fix amount to be relative to frequency
+          list
+        }
       </tbody>
     </table>
   );
