@@ -1,6 +1,8 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 
+import { deriveLinearPredict, predictConstant } from './calcFunctions';
+
 import CalculatorForm from './CalculatorForm';
 import Table from './Table';
 
@@ -22,9 +24,25 @@ const sample = [
   },
 ];
 
-export default function Calculator() {
-  // const { userData, setUserData } = props;
+export default function Calculator(props) {
+  // eslint-disable-next-line react/prop-types
+  const { setChartData } = props;
   const [userData, setUserData] = React.useState(sample);
+
+  React.useEffect(() => {
+    const incomeData = deriveLinearPredict(userData, 'Income');
+    const expenseData = deriveLinearPredict(userData, 'Expense');
+    const assetData = predictConstant(userData, 'Asset');
+    const liabilityData = predictConstant(userData, 'Liability');
+
+    const calcData = [];
+    // eslint-disable-next-line no-plusplus
+    for (let i = 0; i < incomeData.length; i++) {
+      calcData.push(incomeData[i] + assetData[i] - expenseData[i] - liabilityData[i]);
+    }
+
+    setChartData(calcData);
+  }, [userData]);
 
   return (
     <div className="container column columns is-justify-content-center" style={{ width: '100%' }}>
