@@ -11,8 +11,26 @@ import './App.css';
 
 const sampleArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
+const sample = [
+  {
+    amount: 200, freq: 'Week', id: 1657426807440, name: 'rent', type: 'Expense',
+  },
+  {
+    amount: 620, freq: 'Fortnight', id: 1657426850888, name: 'job', type: 'Income',
+  },
+  {
+    amount: 1200, freq: 'None', id: 1657426876768, name: 'stocks', type: 'Asset',
+  },
+  {
+    amount: 920, freq: 'None', id: 1657426889995, name: 'crypto', type: 'Asset',
+  },
+  {
+    amount: 400, freq: 'None', id: 1657427083991, name: 'taxes', type: 'Liability',
+  },
+];
+
 function App() {
-  const [userData, setUserData] = React.useState([]);
+  const [userData, setUserData] = React.useState(sample);
 
   const uD = {
     labels: sampleArray.map((a) => {
@@ -24,7 +42,7 @@ function App() {
     }),
     datasets: [
       {
-        label: 'Sample Data',
+        label: 'Sample',
         data: sampleArray.map(() => faker.datatype.number({ min: 0, max: 1000 })),
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
@@ -35,7 +53,7 @@ function App() {
   return (
     <div className="App columns is-flex-direction-column m-0 p-4 is-align-items-center is-justify-content-center">
       <Navbar />
-      <div className="container column columns is-justify-content-center">
+      <div className="container column columns is-justify-content-center" style={{ width: '100%' }}>
         <Calculator userData={userData} setUserData={setUserData} />
         <Table userData={userData} setUserData={setUserData} />
       </div>

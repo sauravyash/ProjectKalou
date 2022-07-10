@@ -57,7 +57,7 @@ export default function Form(props) {
             type="text"
             id="name"
             name="name"
-            placeholder="Name Of Asset/Liability:"
+            placeholder="Name/Description"
             value={name}
             onChange={(e) => { setName(e.target.value); }}
             required
@@ -96,9 +96,6 @@ export default function Form(props) {
         <div className="field is-grouped is-justify-content-center">
           <div className="control">
             <button type="submit" className="button is-link">Submit</button>
-          </div>
-          <div className="control">
-            <button type="button" className="button is-link is-light">Cancel</button>
           </div>
         </div>
       </form>

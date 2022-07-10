@@ -17,8 +17,9 @@ Calculator.propTypes = {
   userData: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
-      type: PropTypes.oneOf(['Asset', 'Liabilty']),
+      type: PropTypes.oneOf(['Asset', 'Liabilty', 'Income', 'Expense']),
       amount: PropTypes.number,
+      freq: PropTypes.oneOf(['Day', 'Week', 'Fortnight', 'Month', 'Quarter', 'Year']),
     }),
   ),
   setUserData: PropTypes.func,
@@ -26,5 +27,8 @@ Calculator.propTypes = {
 
 Calculator.defaultProps = {
   userData: [],
-  setUserData: () => {},
+  setUserData: () => { },
 };
+/*
+
+*/

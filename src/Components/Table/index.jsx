@@ -9,7 +9,7 @@ export default function Table(props) {
     <tr key={el.id}>
       <td>{el.name}</td>
       <td>{el.type}</td>
-      <td>{`$${el.amount} ${el.freq !== 'None' ? `/${el.freq}` : ''}`}</td>
+      <td>{`$${el.amount} ${el.freq !== 'None' ? `/ ${el.freq}` : ''}`}</td>
       <td>
         <button
           type="button"
@@ -17,6 +17,7 @@ export default function Table(props) {
           style={{
             padding: '0.2rem 0.5rem',
             height: 'auto',
+            borderColor: 'white',
           }}
           onClick={() => setUserData(userData.filter((obj) => obj.id !== el.id))}
         >
@@ -35,10 +36,10 @@ export default function Table(props) {
     <table className="column p-4 table is-hoverable" style={tableStyle}>
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Amount</th>
-          <th><abbr title="Delete">Del</abbr></th>
+          <th align="center">Name</th>
+          <th align="center">Type</th>
+          <th align="center">Amount</th>
+          <th align="center"><abbr title="Delete">Del</abbr></th>
         </tr>
       </thead>
       <tbody>

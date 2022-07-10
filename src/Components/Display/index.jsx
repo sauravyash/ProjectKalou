@@ -35,6 +35,23 @@ export const options = {
       position: 'bottom',
     },
   },
+  scales: {
+    x: {
+      title: {
+        display: true,
+        text: 'Month',
+      },
+    },
+    y: {
+      ticks: {
+        // Include a dollar sign in the ticks
+        // eslint-disable-next-line no-unused-vars
+        callback(value) {
+          return `$${value}`;
+        },
+      },
+    },
+  },
 };
 
 export default function Display(props) {
