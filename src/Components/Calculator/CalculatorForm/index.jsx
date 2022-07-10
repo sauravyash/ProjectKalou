@@ -3,7 +3,7 @@ import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { CalculatorForm } from './CalculatorElements';
-import { predictLinear } from '../calcFunctions';
+
 
 import './form.css';
 
