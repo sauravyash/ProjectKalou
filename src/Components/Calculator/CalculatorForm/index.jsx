@@ -1,7 +1,9 @@
-import React from 'react';
+/* eslint-disable */
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { CalculatorForm } from './CalculatorElements';
+import { predictLinear } from '../calcFunctions';
 
 import './form.css';
 
@@ -13,7 +15,7 @@ export default function Form(props) {
   const [amount, setAmount] = React.useState(0);
   const [freq, setFreq] = React.useState('None');
 
-  const submit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     const tmp = [...userData];
@@ -30,12 +32,23 @@ export default function Form(props) {
     setType('Asset');
     setAmount(0);
     setFreq('None');
+    alert('You have submitted the form.');
   };
 
   return (
     <CalculatorForm className="column p-6">
-      <form onSubmit={submit}>
+      <form onSubmit={handleSubmit}>
         <h1 className="title">Add an Item</h1>
+        <div className="field">
+          <input 
+            className="input" 
+            type="text" 
+            id="name" 
+            name="name" 
+            placeholder="Name Of Asset/Liability"
+            onChange={(e) => { setName(e.target.value); }}
+          />
+        </div>
         <div className="field">
           <label className="label" htmlFor="type">
             <span>Type</span>
@@ -107,9 +120,9 @@ Form.propTypes = {
   userData: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
-      type: PropTypes.oneOf(['Asset', 'Liabilty', 'Income', 'Expense']),
+      type: PropTypes.oneOf(['Asset', 'Liability', 'Income', 'Expense']),
       amount: PropTypes.number,
-      freq: PropTypes.oneOf(['Day', 'Week', 'Fortnight', 'Month', 'Quarter', 'Year']),
+      freq: PropTypes.oneOf(['Day', 'Week', 'Fortnight', 'Month', 'Quarter', 'Year', 'None']),
     }),
   ),
   setUserData: PropTypes.func,
@@ -117,5 +130,5 @@ Form.propTypes = {
 
 Form.defaultProps = {
   userData: [],
-  setUserData: () => { },
+  setUserData: (userData) => {handleSubmit },
 };

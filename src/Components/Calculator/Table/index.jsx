@@ -57,7 +57,7 @@ Table.propTypes = {
   userData: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
-      type: PropTypes.oneOf(['Asset', 'Liabilty', 'Income', 'Expense']),
+      type: PropTypes.oneOf(['Asset', 'Liability', 'Income', 'Expense']),
       amount: PropTypes.number,
       freq: PropTypes.oneOf(['Day', 'Week', 'Fortnight', 'Month', 'Quarter', 'Year', 'None']),
     }),
