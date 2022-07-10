@@ -3,8 +3,8 @@ import 'bulma/css/bulma.min.css';
 
 import Navbar from './Components/Navbar';
 import Calculator from './Components/Calculator';
-import Display from './Components/Display';
-import Table from './Components/Table';
+// import Display from './Components/Display';
+// import Table from './Components/Table';
 
 import './App.css';
 
@@ -16,9 +16,7 @@ function App() {
       <Navbar />
       <div className="column columns is-align-items-center is-justify-content-center">
         <Calculator userData={userData} setUserData={setUserData} />
-        <Table />
       </div>
-      <Display className="column" userData={userData} />
     </div>
   );
 }

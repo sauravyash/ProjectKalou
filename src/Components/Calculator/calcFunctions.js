@@ -1,16 +1,29 @@
 /* eslint-disable */
-const PREDICTEDTIME = 24; // months
+const PREDICTEDTIME = 7; // months
 
-const average = (array) => array.reduce((a, b) => a + b) / array.length;
+function average (array){
+  let sum = 0;
+  for (let i = 0;  i < array.length-1; i += 1){
+    sum+=parseInt(array[i]);
+  }
+  return sum/array.length
+}
 
-function processObjectData(userData, fieldName) {
-  const dataArray = [];
-  for (const key in userData){
-    if (key == fieldName){
-      dataArray.push(userData[key])
+function convertToInt(array){
+  let tempArr = [];
+  for (let a = 0; a < array.length-1; a+=1){
+    tempArr.push(parseInt(array[a]));
+  }
+  return tempArr;
+}
+
+export function processObjectData(userData, fieldName) {
+  let dataArray = [userData[0].amount];
+  for (let i = 1; i < userData.length; i += 1) {
+    if(userData[i].type == fieldName) {
+      dataArray.push(userData[i].amount);
     }
   }
-  console.log(dataArray)
   return dataArray
 }
 
@@ -26,12 +39,13 @@ export function predictConstant(userData,fieldName) {
 }
 
 
-function deriveLinearPredict(userData,fieldName) {
-  let array = processObjectData(userData,fieldName);
-  const currentLength = array.length;
-  const intercept = array[array.length-1];
+export function deriveLinearPredict(userData,fieldName) {
+  let array = convertToInt(processObjectData(userData,fieldName));
+  console.log('test',array)
+  const currentLength = parseInt(array.length);
+  const intercept = parseInt(array[array.length-1]);
   const temp = [];
-  let m = array[0];
+  let m = parseInt(array[0]);
   // Find rate of change of array
   if (array.length === 1) {
     m = array[0];
@@ -44,16 +58,14 @@ function deriveLinearPredict(userData,fieldName) {
     m = average(temp);
   }
   
+  let sum = 0;
   for (let i = 1; i < PREDICTEDTIME + 1 - currentLength; i += 1) {
-    array.push(m*i + intercept);
+    sum = m*i + intercept;
+    array.push(sum);
   }
+  console.log('modified',array)
   return array;
 }
 
-export function predictLinear(values) {
-  // Use for consistent subjects such as Expenses and Liabilities
-  // Predict for the next 24 months
-  deriveLinearPredict(values);
-  return values;
-}
+
 
