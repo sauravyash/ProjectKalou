@@ -33,7 +33,7 @@ export default function Form(props) {
   };
 
   return (
-    <CalculatorForm>
+    <CalculatorForm className="column p-6">
       <form onSubmit={submit}>
         <h1 className="title">Add an Item</h1>
         <div className="field">

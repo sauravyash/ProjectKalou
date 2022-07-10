@@ -29,7 +29,8 @@ export default function Table(props) {
   ));
 
   const tableStyle = {
-    maxWidth: '32rem',
+    tableLayout: 'fixed',
+    width: '100%',
   };
 
   return (
