@@ -10,6 +10,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  LineController,
 } from 'chart.js';
 
 import {
@@ -26,6 +27,7 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
+  LineController,
 );
 
 export const options = {
