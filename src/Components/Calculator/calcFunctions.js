@@ -1,10 +1,23 @@
+/* eslint-disable */
 const PREDICTEDTIME = 24; // months
 
 const average = (array) => array.reduce((a, b) => a + b) / array.length;
 
-export function predictConstant(values) {
+function processObjectData(userData, fieldName) {
+  const dataArray = [];
+  for (const key in userData){
+    if (key == fieldName){
+      dataArray.push(userData[key])
+    }
+  }
+  console.log(dataArray)
+  return dataArray
+}
+
+export function predictConstant(userData,fieldName) {
   // Use for consistent subjects such as Expenses and Liabilities
   // Predict for the next 24 months
+  let values = processObjectData(userData,fieldName);
   const currentLength = values.length;
   for (let i = 0; i < PREDICTEDTIME - currentLength; i += 1) {
     values.push(average(values));
@@ -12,8 +25,9 @@ export function predictConstant(values) {
   return values;
 }
 
-/* eslint-disable */
-function deriveLinearPredict(array) {
+
+function deriveLinearPredict(userData,fieldName) {
+  let array = processObjectData(userData,fieldName);
   const currentLength = array.length;
   const intercept = array[array.length-1];
   const temp = [];
@@ -42,3 +56,4 @@ export function predictLinear(values) {
   deriveLinearPredict(values);
   return values;
 }
+

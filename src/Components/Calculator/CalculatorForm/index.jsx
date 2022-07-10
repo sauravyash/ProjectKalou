@@ -1,7 +1,9 @@
+/* eslint-disable */
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { CalculatorForm } from './CalculatorElements';
+import { predictLinear } from '../calcFunctions';
 
 export default function Form(props) {
   const { userData, setUserData } = props;
@@ -17,9 +19,11 @@ export default function Form(props) {
     const amountSubmit = amountRef.current.value;
     const subjectSubmit = subjectRef.current.value;
     console.log(subjectSubmit);
-    userData.push({ name: nameSubmit, type: subjectSubmit, amount: amountSubmit });
+    props.userData.push({ name: nameSubmit, type: subjectSubmit, amount: amountSubmit });
     alert('You have submitted the form.');
   };
+
+
 
   return (
     <CalculatorForm>
@@ -72,5 +76,5 @@ Form.propTypes = {
 
 Form.defaultProps = {
   userData: [],
-  setUserData: () => { },
+  setUserData: (userData) => {handleSubmit },
 };
