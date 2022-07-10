@@ -1,27 +1,36 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+import './table.css';
 
 export default function Table(props) {
-  // eslint-disable-next-line react/prop-types
-  const { userData } = props;
-  let list;
+  const { userData, setUserData } = props;
+  const list = userData.map((el) => (
+    <tr key={el.id}>
+      <td>{el.name}</td>
+      <td>{el.type}</td>
+      <td>{`$${el.amount} ${el.freq !== 'None' ? `/${el.freq}` : ''}`}</td>
+      <td>
+        <button
+          type="button"
+          className="button"
+          style={{
+            padding: '0.2rem 0.5rem',
+            height: 'auto',
+          }}
+          onClick={() => setUserData(userData.filter((obj) => obj.id !== el.id))}
+        >
+          ❌
+        </button>
 
-  React.useEffect(() => {
-    // eslint-disable-next-line react/prop-types
-    list = userData.map((el) => (
-      <tr>
-        <td>{el.name}</td>
-        <td>{el.type}</td>
-        <td>{`$${el.amount}`}</td>
-        <td>❌</td>
-      </tr>
-    ));
-  }, [userData]);
-
-  // eslint-disable-next-line react/prop-types
+      </td>
+    </tr>
+  ));
 
   const tableStyle = {
     maxWidth: '32rem',
   };
+
   return (
     <table className="column p-4 table is-hoverable" style={tableStyle}>
       <thead>
@@ -41,3 +50,20 @@ export default function Table(props) {
     </table>
   );
 }
+
+Table.propTypes = {
+  userData: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      type: PropTypes.oneOf(['Asset', 'Liabilty', 'Income', 'Expense']),
+      amount: PropTypes.number,
+      freq: PropTypes.oneOf(['Day', 'Week', 'Fortnight', 'Month', 'Quarter', 'Year', 'None']),
+    }),
+  ),
+  setUserData: PropTypes.func,
+};
+
+Table.defaultProps = {
+  userData: [],
+  setUserData: () => {},
+};

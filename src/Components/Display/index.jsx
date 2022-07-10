@@ -49,7 +49,7 @@ export default function Display(props) {
 }
 
 Display.propTypes = {
-  chartData: PropTypes.arrayOf({
+  chartData: PropTypes.shape({
     date: PropTypes.number,
     amount: PropTypes.number,
   }),

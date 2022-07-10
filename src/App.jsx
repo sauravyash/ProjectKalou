@@ -33,11 +33,11 @@ function App() {
   };
 
   return (
-    <div className="App columns is-flex-direction-column m-0 p-4  is-align-items-center is-justify-content-center">
+    <div className="App columns is-flex-direction-column m-0 p-4 is-align-items-center is-justify-content-center">
       <Navbar />
-      <div className="column columns is-align-items-center is-justify-content-center">
+      <div className="container column columns is-justify-content-center">
         <Calculator userData={userData} setUserData={setUserData} />
-        <Table userData={userData} />
+        <Table userData={userData} setUserData={setUserData} />
       </div>
       <Display className="column" chartData={uD} />
     </div>
